@@ -1,0 +1,294 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<string.h>
+
+struct quiz{
+    char name[20];
+    int score;
+    int rate;
+
+}q;
+
+void start();
+void high_score();
+void assist();
+
+void main()
+{
+    char choice;
+
+    printf("Enter S for Start the game\n");
+    printf("Enter H for High Score\n");
+    printf("Enter A for Assist\n");
+    printf("Enter E for Exit\n");
+
+    scanf("%c",&choice);
+
+    switch(choice)
+    {
+        case 'S':
+
+        start();
+
+        break;
+
+        case 'H':
+
+        high_score();
+
+        break;
+
+        case 'A':
+
+        assist();
+
+        break;
+
+        default:
+
+        exit(1);
+
+        getch();
+
+    }
+}
+void high_score()
+{
+    char ch;
+
+    FILE *fa;
+    if((fa=fopen("/n play2.txt","r"))==NULL)
+    {
+        printf("No one play the game");
+    }
+
+    else{
+        printf("Print High Score");
+        printf("Name Score Ratings");
+    }
+    while(fscanf(fa,"%s %d %d",q.name,&q.score,&q.rate)!=EOF)
+    {
+        printf("%s %d %d",q.name,q.score,q.rate);
+    }
+
+    fclose(fa);
+
+    printf("Do you want to play the game or exit");
+
+    scanf("%c",&ch);
+
+    if(ch=='S')
+    {
+        start();
+    }
+    else{
+        exit(1);
+    }
+}
+
+void assist()
+{
+    char ch;
+    printf("Instructions/n");
+    printf("when quiz begin you have total 20 questions and each have 4 options and 1 will be correct among them\n");
+    printf("/tCorrect answers will be rewarded 5 points\n");
+    printf("Wrong answer will be rewarded 0\n");
+    printf("If answer is wrong then no marks will deducted from correct one\n");
+    printf("After finishing the game you will get your score according to your performance and also you get ratings\n");
+    printf("Thanks for choosing the game\n");
+    printf("All The Best!!\n");
+
+    printf("Do you want to play the game or exit");
+
+    scanf("%c",&ch);
+
+    if(ch=='S')
+    {
+        start();
+    }
+    else{
+        exit(1);
+    }
+}
+
+void start()
+{
+    char ch;
+    char ans;
+    int ratings;
+    int count=0;
+
+    FILE*fa;
+
+    if((fa=fopen("play1.txt","a"))==NULL)
+    {
+        printf("file is not open");
+    }
+
+   printf("Enter Your Name\n");
+   scanf("%s",&q.name);
+
+    printf("Welcome \t %s\n",q.name);
+    printf(" Your quiz will be start now \n");
+    printf("All The Best\n%s",q.name);
+
+    printf("Question 1:what is a correct syntax to output 'Hello World' in C?\n");
+    printf("1) console.WriteLine("Hello World");\t");
+    printf("2) printf("Hello World");\n");
+    printf("3) system.out.printline("Hello World");\t");
+    printf("4) cout<<"Hello World";\n");
+
+    printf("Question 2:How do you insert COMMENTS in c code?\n");
+    printf("1) --This is comment\t");
+    printf("2) *This is comment\n");
+    printf("3) //This is comment\t");
+    printf("4) #This is comment\n");
+
+    printf("Question 3:How can you create a variable with yhe numeric value 5?\n");
+    printf("1) num=5;\t");
+    printf("2) val num=5;\n");
+    printf("3) num=5 int;\t");
+    printf("4) int num=5;\n");
+
+    printf("Question 4:How can you create a variable with the floating number 2.8?");
+    printf("1) num=2.8 double;\t");
+    printf("2) num=2.8 float;\n");
+    printf("3) val num=2.8;\t");
+    printf("4) flaot num=2.8;\n");
+
+    printf("Question 5:which operator is used to add together two values?\n");
+    printf("1) The + sigh\t");
+    printf("2) The ADD keyword\n");
+    printf("3) The & sign\t");
+    printf("4) The * sign\n");
+
+    printf("Question 6:which fnction is often used to output values and print text?\n");
+    printf("1) printf()\t");
+    printf("2) printword()\n");
+    printf("3) write()\t");
+    printf("4) output()\n");
+
+    printf("Question 7:which format specifier is used to print ntegers?\n");
+    printf("1) %d\t");
+    printf("2) %c\n");
+    printf("3) %s\t");
+    printf("4) %f\n");
+
+    printf("Question 8:which operator can be used to compare two values?\n");
+    printf("1) ><\t");
+    printf("2) <>\n");
+    printf("3) =\t");
+    printf("4) ==\n");
+
+    printf("Question 9:which operator can be used to find the memory size(in bytes) of a data type or variable?\n");
+    printf("1) The length property\t");
+    printf("2) The len property\n");
+    printf("3) The sizeof property\t");
+    printf("4) The sizer property\n");
+
+    printf("Question 10:which keyword can be used to make a variabe unchangeable/read only?\n");
+    printf("1) readonly\t");
+    printf("2) final\n");
+    printf("3) constant\t");
+    printf("4) const\n");
+
+    printf("Question 11:what do we call the following? int myNumbers[]={25,50,75,100}\n");
+    printf("1) a poiter\t");
+    printf("2) a class\n");
+    printf("3) an array\t");
+    printf("4) none of the above\n");
+
+    printf("Question 12:Array indexes start with?\n");
+    printf("1) 1\t");
+    printf("2) 2\n");
+    printf("3) 0\t");
+    printf("4) none\n");
+
+    printf("Question 13:how do you call a fuction in C?\n");
+    printf("1) myFunction;\t");
+    printf("2) myFunction[];\n");
+    printf("3) (myFunction);\t");
+    printf("4) myFuntion();\n");
+
+    printf("Question 14:how do you start writing in C?\n");
+    printf("1) if x>y()\t");
+    printf("2) if(x>y)\n");
+    printf("3) if x>y then\t");
+    printf("4) if x>y\n");
+
+    printf("Question 15:how do you start writing a while loop in C?\n");
+    printf("1) while(x<y)\t");
+    printf("2) while x<y\n");
+    printf("3) if x>y while\t");
+    printf("4) while x<y then\n");
+
+    printf("Question 16:which keyword is used to return a value inside a function?\n");
+    printf("1) void\t");
+    printf("2) get\n");
+    printf("3) break\t");
+    printf("4) return\n");
+
+    printf("Question 17:how do you start writing a for loop in C ?\n");
+    printf("1) for(int i=0; while<5;i++)\t");
+    printf("2) for(int i=0;switch<5;i++)\n");
+    printf("3) for(int i=0;i<5;i++)\t");
+    printf("4) for(x in y)\n");
+
+    printf("Question 18:which statement is used to stop a loop?\n");
+    printf("1) break\t");
+    printf("2) stop\n");
+    printf("3) void\t");
+    printf("4) exit\n");
+
+    printf("Question 19:what is ptr in the following code known as? int *ptr=&myAge;\n");
+    printf("1) a ponter\t");
+    printf("2) a class\n");
+    printf("3) a parameter\t");
+    printf("4) an array\n");
+
+    printf("Question 20:which keyword is used to create a structure?\n");
+    printf("1) structure\t");
+    printf("2) struct\n");
+    printf("3) str\t");
+    printf("4) structs\n");
+
+    if(count>0)
+    {
+        printf("you have scored %d",count*5);
+        print("Thank You !! ");
+        q.score = count*5;
+    }
+
+    if(q.score>=80)
+    print("5/5");
+    q.rate = 5;
+
+    else
+    if(q.score>=60 && q.score<80)
+    printf("4/5");
+    q.rate = 4;
+
+    else
+    if(q.score>=40 && q.score<60)
+    printf("3/5");
+    q.rate = 3;
+
+    else
+    if(q.score>=20 && q.score<40)
+    printf("2/5");
+    q.rate = 2;
+
+    else
+    if(q.score>20)
+    printf("1/5");
+    q.rate = 1;
+
+    fprintf(fa,"%s %d %d",q.name,q.score,q.rate);
+    fclose(fa);
+
+    else
+    printf("No answer is correct please try hard and attempt next time")
+
+}
